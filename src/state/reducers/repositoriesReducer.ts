@@ -17,9 +17,15 @@ interface RepositoriesState {
 //     payload?: any; // ?. means may or may not have payload property
 // }
 
+const initialState = {
+    loading: false,
+    error: null,
+    data: []
+}
+
 // NOTICE under 'search_repositories': we can easily change the 'data' property that we are returning to any kind of value (example -> data: {} or data: 12345 or data: 'asfgkj')
 // To avoid this: we MUST apply the 'RETURN TYPE ANNOTATION' to our 'reducer' function by ALWAYS returning the value of interface type 'RepositoriesState'
-const reducer = (state: RepositoriesState, action: Action): RepositoriesState => {
+const reducer = (state: RepositoriesState = initialState, action: Action): RepositoriesState => {
     // Using separate interface action -> 100% certain as it is equivalent to if (action.type === 'search_repositories') { ... }
 
     switch (action.type) {
